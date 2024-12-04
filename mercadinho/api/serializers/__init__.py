@@ -1,1 +1,6 @@
 from api.serializers.ProdutoSerializer import ProdutoSerializer
+
+from api.serializers.user.RegisterUsuarioSerializer import RegisterUsuarioSerializer
+from api.serializers.user.UsuarioSerializer import UsuarioSerializer
+
+from api.serializers.vendedor.VendedorSerializer import VendedorSerializer
