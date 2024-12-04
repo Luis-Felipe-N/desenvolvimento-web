@@ -1,0 +1,48 @@
+{% extends 'global/base.html' %}
+{% load widget_tweaks %}
+
+{% block title %}Login{% endblock title %}
+
+{% block content %}
+    <main class="users center">
+        <div class="users__container">
+            <h2>{{ titulo_da_pagina }}</h2>
+
+{% if form.errors %}
+    <p class="alert__error">
+        Verifique o formulário
+    </p>                
+{% endif %} 
+{% include 'global/components/messages.html' %}
+
+<form method="post" class="form">
+    {% csrf_token %}
+    {% for field in form %}
+        <div>
+            <label>
+                {% if field.help_text %}
+                    <span class="form__help-text">
+                        {{ field.help_text}}
+                    </span>
+                {% endif %}
+                {{ field.label }}
+                {% render_field field class="form__input" %}
+            </label>
+            {% if field.errors %}
+                {% for error in field.errors %}
+                    <p class="form_error">
+                        {{ error }}  
+                    </p>                
+                {% endfor %}
+            {% endif %}
+        </div>
+    {% endfor %}
+    <button>
+        Cadastrar
+    </button>
+</form>
+
+            <p>Não possui uma conta? <a href="{% url 'users:register' %}">Crie uma conta</a> </p>
+        </div>
+    <main>  
+{% endblock content %}
