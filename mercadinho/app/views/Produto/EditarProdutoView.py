@@ -2,12 +2,12 @@ from django.views.generic.edit import UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
 
-from mercado.models.Produto import Produto
-from mercado.forms.ProdutoForm import ProdutoForm
+from app.models.Produto import Produto
+from app.forms.ProdutoForm import ProdutoForm
 
 
 class EditarProdutoView(LoginRequiredMixin, UpdateView):
-    template_name = template_name = 'mercado/pages/form-produto.html'
+    template_name = template_name = 'app/pages/form-produto.html'
     model = Produto
     form_class = ProdutoForm
 

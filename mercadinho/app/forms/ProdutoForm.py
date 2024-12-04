@@ -1,4 +1,4 @@
-from mercado.models.Produto import Produto
+from app.models.Produto import Produto
 from django import forms
 
 class ProdutoForm(forms.ModelForm):

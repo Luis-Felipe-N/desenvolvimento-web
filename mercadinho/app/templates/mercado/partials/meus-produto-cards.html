@@ -1,7 +1,7 @@
 {% extends './cards.html' %}
 
 {% block edit %}
-    <a class="editar_produto" href="{% url 'mercado:editar-produto' pk=produto.id %}">
+    <a class="editar_produto" href="{% url 'app:editar-produto' pk=produto.id %}">
         <span>Editar</span>
     </a>
 {% endblock edit %}

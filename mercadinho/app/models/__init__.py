@@ -1,3 +1,3 @@
-from mercado.models.Categoria import Categoria
-from mercado.models.Produto import Produto
-from mercado.models.Carrinho import Carrinho
+from app.models.Categoria import Categoria
+from app.models.Produto import Produto
+from app.models.Carrinho import Carrinho

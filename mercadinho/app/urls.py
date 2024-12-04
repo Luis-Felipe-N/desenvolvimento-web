@@ -1,9 +1,9 @@
 from django.urls import path
 
-from mercado.views.PesquisaView import PesquisaView
+from app.views.PesquisaView import PesquisaView
 from .views import *
 
-app_name = 'mercado'
+app_name = 'app'
 
 urlpatterns = [
     path('', HomeView.as_view(), name='home'),

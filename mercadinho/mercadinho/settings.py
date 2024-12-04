@@ -42,7 +42,7 @@ INSTALLED_APPS += [
 ]
 
 INSTALLED_APPS += [
-    'mercado',
+    'app',
     'users'
 ]
 
@@ -56,7 +56,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'mercadinho_do_seu_luis.urls'
+ROOT_URLCONF = 'mercadinho.urls'
 
 TEMPLATES = [
     {
@@ -76,7 +76,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'mercadinho_do_seu_luis.wsgi.application'
+WSGI_APPLICATION = 'mercadinho.wsgi.application'
 
 
 # Database
@@ -154,7 +154,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 LOGIN_URL = 'users:login'
-LOGIN_REDIRECT_URL = 'mercado:home'
+LOGIN_REDIRECT_URL = 'app:home'
 
 AUTH_USER_MODEL = 'users.Usuario'
 

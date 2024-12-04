@@ -1,11 +1,11 @@
 from django.views.generic.list import ListView
 from django.views import View
 from django.shortcuts import render
-from mercado.models.Produto import Produto
+from app.models.Produto import Produto
 
 # Dá para usar o TemplateView, não vou usar porqus estou aprendendo
 class HomeView(ListView):
-    template_name = 'mercado/pages/home.html'
+    template_name = 'app/pages/home.html'
     context_object_name = "produtos"
     model = Produto
     

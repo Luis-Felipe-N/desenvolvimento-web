@@ -5,14 +5,14 @@ from django.views.generic.list import ListView
 from django.views.generic import CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-from mercado.models.Carrinho import Carrinho
-from mercado.models.Produto import Produto
+from app.models.Carrinho import Carrinho
+from app.models.Produto import Produto
 
 
 # ver forma melhor de criar o Carrinho
 
 class CarrinhoView(LoginRequiredMixin, ListView):
-    template_name = 'mercado/pages/carrinho.html'
+    template_name = 'app/pages/carrinho.html'
     model = Carrinho
     contect_object_name = 'produtos'
     ordering = ['-id']
@@ -28,7 +28,7 @@ class CarrinhoView(LoginRequiredMixin, ListView):
 
 class AddCarrinhoView(LoginRequiredMixin, View):
     model = Carrinho
-    success_url = 'mercado:home'
+    success_url = 'app:home'
 
     def get(self, request, produto_id):
         produto = Produto.objects.get(id=produto_id)
@@ -37,7 +37,7 @@ class AddCarrinhoView(LoginRequiredMixin, View):
         carrinho = Carrinho.objects.get_or_create(usuario=usuario, produto=produto)
         print(request)
 
-        return redirect('mercado:carrinho')
+        return redirect('app:carrinho')
 
     def post(self, request, produto_id):
         produto = Produto.objects.get(id=produto_id)
@@ -45,11 +45,11 @@ class AddCarrinhoView(LoginRequiredMixin, View):
 
         Carrinho.objects.create(usuario=usuario, produto=produto)
 
-        return redirect('mercado:carrinho')
+        return redirect('app:carrinho')
 
 class RemoverCarrinhoView(LoginRequiredMixin, View):
     model = Carrinho
-    success_url = 'mercado:home'
+    success_url = 'app:home'
 
     def get(self, request, carrinho_id):
         carrinho = Carrinho.objects.get(id=carrinho_id, usuario=self.request.user)
@@ -57,5 +57,5 @@ class RemoverCarrinhoView(LoginRequiredMixin, View):
         carrinho.delete()
         print(request)
 
-        return redirect('mercado:carrinho')
+        return redirect('app:carrinho')
 

@@ -21,7 +21,7 @@ class LoginView(LoginViewClass):
 
         if self.request.user.is_authenticated:
             messages.error(self.request, 'Usuário já está logado, faça logOut para entrar novamente')
-            return redirect('mercado:home')
+            return redirect('app:home')
         return super().dispatch(request, *args, **kwargs)
 
     def get_template(self, form=None, *args, **kwargs):
@@ -51,7 +51,7 @@ class LoginView(LoginViewClass):
             if user is not None:
                 login(request, user)
                 messages.success(request, 'Login feito com sucesso')
-                return redirect(reverse('mercado:home'))
+                return redirect(reverse('app:home'))
             else:
                 messages.error(request, "Usuário ou senha inválida")
                 return self.get_template(form)
@@ -63,7 +63,7 @@ class LogoutView(LoginRequiredMixin, View):
     def get(self, request):
         logout(request)
 
-        return redirect(reverse('mercado:home'))
+        return redirect(reverse('app:home'))
 
 class RegisterUsuarioView(View):
     template_name = 'users/pages/register.html'

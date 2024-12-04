@@ -20,7 +20,7 @@
             {% csrf_token %}
 
             <div class="form-produto__container-titulo">
-                {% include 'mercado/partials/titulo.html' %}
+                {% include 'app/partials/titulo.html' %}
             </div>
 
             <div class="form-produto__campo-textos">
@@ -85,7 +85,7 @@
                 <button type="submit" class="btn btn_green">
                     Salvar
                 </button>
-                <a class="btn_white" href="{% url 'mercado:home' %}">Voltar</a>
+                <a class="btn_white" href="{% url 'app:home' %}">Voltar</a>
             </div>
         </form>
     </main>

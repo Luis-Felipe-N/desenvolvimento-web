@@ -13,13 +13,13 @@ class RegisterVendedorView(LoginRequiredMixin ,CreateView):
     template_name = 'users/pages/register-vendedor.html'
     model = Vendedor
     form_class= RegisterVendedorForm
-    # success_url = redirect('mercado:home')
+    # success_url = redirect('app:home')
 
     # def dispatch(self, request, *args, **kwargs):
     #     usuario_vendedor = hasattr(self.request.user, '')
     #     if usuario_vendedor:
     #         messages.error(self.request, 'Usuário já é vendedor')
-    #         return redirect('mercado:home')
+    #         return redirect('app:home')
     #     return super().dispatch(request, *args, **kwargs)
     
 
@@ -31,7 +31,7 @@ class RegisterVendedorView(LoginRequiredMixin ,CreateView):
 
     def get_success_url(self):
         messages.success(self.request, 'Agora você é um vendedor')
-        return reverse('mercado:home')
+        return reverse('app:home')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -65,6 +65,6 @@ class RegisterVendedorView(LoginRequiredMixin ,CreateView):
 
     #         form.save()
 
-    #         return redirect('mercado:home')
+    #         return redirect('app:home')
 
     #     return self.get_template(form)

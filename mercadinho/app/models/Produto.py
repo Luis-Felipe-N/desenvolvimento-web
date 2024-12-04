@@ -4,7 +4,7 @@ from django.db import models
 from django.core.files.base import ContentFile
 import locale
 from PIL import Image
-from mercado.models.Categoria import Categoria
+from app.models.Categoria import Categoria
 
 # Create your models here.
 class Produto(models.Model):
@@ -47,7 +47,7 @@ class Produto(models.Model):
         null=True,
     )
 
-    imagem = models.ImageField(upload_to="mercado/covers/%Y/%m/%d/")
+    imagem = models.ImageField(upload_to="app/covers/%Y/%m/%d/")
 
     categoria = models.ForeignKey(
         'Categoria',
@@ -96,7 +96,7 @@ class Produto(models.Model):
         return super(Produto, self).save(*args, **kwargs)   
 
     def get_absolute_url(self, **kwargs):
-        return reverse('mercado:produto', kwargs={'id': self.id})
+        return reverse('app:produto', kwargs={'id': self.id})
     
     def get_preco_formatado(self, preco):
         locale.setlocale( locale.LC_ALL, '' )

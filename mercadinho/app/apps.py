@@ -1,9 +1,9 @@
 from django.apps import AppConfig
 
 
-class MercadoConfig(AppConfig):
+class AppConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'mercado'
+    name = 'app'
 
     def ready(self):
-        import mercado.signals
+        import app.signals

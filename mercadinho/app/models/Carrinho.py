@@ -14,7 +14,7 @@ class Carrinho(models.Model):
     )
 
     produto = models.ForeignKey(
-        'mercado.Produto',
+        'app.Produto',
         on_delete=models.CASCADE
     )
 

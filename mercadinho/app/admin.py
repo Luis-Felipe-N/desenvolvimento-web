@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from mercado.models import *
+from app.models import *
 
 admin.site.register(Produto)
 

@@ -7,11 +7,11 @@ from django.views.generic.edit import CreateView
 from PIL import Image
 from django.core.files.uploadedfile import InMemoryUploadedFile
 ##############
-from mercado.forms.ProdutoForm import ProdutoForm
-from mercado.models.Produto import Produto
+from app.forms.ProdutoForm import ProdutoForm
+from app.models.Produto import Produto
 
 class AdicionarProdutoView(LoginRequiredMixin, CreateView):
-    template_name = 'mercado/pages/form-produto.html'
+    template_name = 'app/pages/form-produto.html'
     model = Produto
     form_class = ProdutoForm
     

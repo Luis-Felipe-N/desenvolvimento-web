@@ -3,10 +3,10 @@ from django.views.generic.list import ListView
 from django.db.models import Q
 
 
-from mercado.models.Produto import Produto
+from app.models.Produto import Produto
 
 class MeusProdutoView(LoginRequiredMixin, ListView):
-    template_name = 'mercado/pages/meus-produtos.html'
+    template_name = 'app/pages/meus-produtos.html'
     model = Produto
     context_object_name = 'produtos'
 

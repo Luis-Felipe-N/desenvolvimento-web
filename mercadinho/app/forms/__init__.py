@@ -1,1 +1,1 @@
-from mercado.forms.ProdutoForm import ProdutoForm
+from app.forms.ProdutoForm import ProdutoForm

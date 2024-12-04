@@ -4,64 +4,73 @@
 <header class="cabecalho">
     <div class="cabecalho__container-top">
         <h1 class="cabecalho__container-top_title">
-            <a href="{% url 'mercado:home' %}">Mercadinho</a>
+            <a href="{% url 'app:home' %}">Mercadinho</a>
         </h1>
         {% include './search.html' %}
         <div class="cabecalho__user">
             {% if user.is_authenticated %}
-                <button id="btn-open-dropdown-user" data="btnOpenDropdownUser" class="btn btn-user">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7ZM14 7C14 8.10457 13.1046 9 12 9C10.8954 9 10 8.10457 10 7C10 5.89543 10.8954 5 12 5C13.1046 5 14 5.89543 14 7Z" fill="currentColor" /><path d="M16 15C16 14.4477 15.5523 14 15 14H9C8.44772 14 8 14.4477 8 15V21H6V15C6 13.3431 7.34315 12 9 12H15C16.6569 12 18 13.3431 18 15V21H16V15Z" fill="currentColor" />
-                    </svg>
-                </button>
+            <button id="btn-open-dropdown-user" data="btnOpenDropdownUser" class="btn btn-user">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7ZM14 7C14 8.10457 13.1046 9 12 9C10.8954 9 10 8.10457 10 7C10 5.89543 10.8954 5 12 5C13.1046 5 14 5.89543 14 7Z"
+                        fill="currentColor" />
+                    <path
+                        d="M16 15C16 14.4477 15.5523 14 15 14H9C8.44772 14 8 14.4477 8 15V21H6V15C6 13.3431 7.34315 12 9 12H15C16.6569 12 18 13.3431 18 15V21H16V15Z"
+                        fill="currentColor" />
+                </svg>
+            </button>
 
-                <div data="dropdownUser" class="cabecalho__user_btns">
-                    <div class="conta">
-                        <span>{{ user.first_name  }}</span>
-                    </div>
-                    <div class="cabecalho__user_btns-redirecionar">
-                        {% if user.vendedor.id %}
-                            <a class="btn_white btn_hover btn" href="{% url 'mercado:adicionar-produto'  %}">Adicionar produto</a>
-                            <a class="btn_green btn_hover btn" href="{% url 'mercado:meus-produtos' %}">Meus Produtos</a>
-                            {% else %}
-                            <a class="btn_white btn_hover btn" href="{% url 'users:register-vendedor' %}">
-                                Virar vendendor
-                            </a>
-                        {% endif %}
-                    </div>
-                    <div class="conta-sair">
-                        <a href="{% url 'users:logout' %}">Sair</a>
-                    </div>
+            <div data="dropdownUser" class="cabecalho__user_btns">
+                <div class="conta">
+                    <span>{{ user.first_name }}</span>
                 </div>
+                <div class="cabecalho__user_btns-redirecionar">
+                    {% if user.vendedor.id %}
+                    <a class="btn_white btn_hover btn" href="{% url 'app:adicionar-produto'  %}">Adicionar produto</a>
+                    <a class="btn_green btn_hover btn" href="{% url 'app:meus-produtos' %}">Meus Produtos</a>
                     {% else %}
-                    <a class="btn_white btn_hover" href="{% url 'users:login' %}">Login</a>
-                    <a class="btn_green btn_hover" href="{% url 'users:register' %}">Registrar</a>
-        {% endif %}
-        <a class="btn-carrinho btn" href="{% url 'mercado:carrinho' %}">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4H19C19.5523 4 20 4.44771 20 5V19C20 19.5523 19.5523 20 19 20H5C4.44772 20 4 19.5523 4 19V5C4 4.44772 4.44771 4 5 4ZM2 5C2 3.34315 3.34315 2 5 2H19C20.6569 2 22 3.34315 22 5V19C22 20.6569 20.6569 22 19 22H5C3.34315 22 2 20.6569 2 19V5ZM12 12C9.23858 12 7 9.31371 7 6H9C9 8.56606 10.6691 10 12 10C13.3309 10 15 8.56606 15 6H17C17 9.31371 14.7614 12 12 12Z" fill="currentColor" /></svg>
-        </a>
+                    <a class="btn_white btn_hover btn" href="{% url 'users:register-vendedor' %}">
+                        Virar vendendor
+                    </a>
+                    {% endif %}
+                </div>
+                <div class="conta-sair">
+                    <a href="{% url 'users:logout' %}">Sair</a>
+                </div>
+            </div>
+            {% else %}
+            <a class="btn_white btn_hover" href="{% url 'users:login' %}">Login</a>
+            <a class="btn_green btn_hover" href="{% url 'users:register' %}">Registrar</a>
+            {% endif %}
+            <a class="btn-carrinho btn" href="{% url 'app:carrinho' %}">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M5 4H19C19.5523 4 20 4.44771 20 5V19C20 19.5523 19.5523 20 19 20H5C4.44772 20 4 19.5523 4 19V5C4 4.44772 4.44771 4 5 4ZM2 5C2 3.34315 3.34315 2 5 2H19C20.6569 2 22 3.34315 22 5V19C22 20.6569 20.6569 22 19 22H5C3.34315 22 2 20.6569 2 19V5ZM12 12C9.23858 12 7 9.31371 7 6H9C9 8.56606 10.6691 10 12 10C13.3309 10 15 8.56606 15 6H17C17 9.31371 14.7614 12 12 12Z"
+                        fill="currentColor" />
+                </svg>
+            </a>
         </div>
     </div>
     <div class="cabecalho__container-bottom">
         <nav class="cabecalho__categorias">
             <ul>
                 <li>
-                    <a href="{% url 'mercado:categoria-produto' 'monitores'  %}">
+                    <a href="{% url 'app:categoria-produto' 'monitores'  %}">
                         Monitores
                     </a>
                 </li>
                 <li>
-                    <a href="{% url 'mercado:categoria-produto' 'celulares'  %}">
+                    <a href="{% url 'app:categoria-produto' 'celulares'  %}">
                         Celulares
                     </a>
                 </li>
                 <li>
-                    <a href="{% url 'mercado:categoria-produto' 'consoles'  %}">
+                    <a href="{% url 'app:categoria-produto' 'consoles'  %}">
                         Consoles
                     </a>
                 </li>
                 <li>
-                    <a href="{% url 'mercado:categoria-produto' 'tvs'  %}">
+                    <a href="{% url 'app:categoria-produto' 'tvs'  %}">
                         TVs
                     </a>
                 </li>
@@ -70,6 +79,6 @@
     </div>
 </header>
 
-    {% block script %}
-    <script src="{% static 'global/js/header.js' %}"></script>
-    {% endblock script %}
+{% block script %}
+<script src="{% static 'global/js/header.js' %}"></script>
+{% endblock script %}
