@@ -1,0 +1,43 @@
+{% extends 'global/base.html' %}
+
+{% block content %}
+    {% include 'global/components/header.html' %}
+    <main class="produto">
+    <div class="produto__layout">
+        <div class="produto__layout_imgs center">
+            <img src="{{ produto.imagem.url }}" alt="{{ produto.nome }}">
+        </div>
+        <div class="produto__layout_info">
+            <div class="info__description">
+                <h1>{{ produto.nome }}</h1>
+                <p>{{ produto.descricao }}</p>
+            </div>
+            <div class="info__price">
+                <div>
+                    <h2>Preço</h2>
+                    {% if produto.com_desconto is True %}
+                        <h3 class="card__info_price_old">R$ {{ produto.get_preco }}</h3>
+                        <h1 class="card__info_price">R$ {{ produto.get_preco_com_desconto }}</h1>
+                    {% else %}
+                        <h1><span>R$</span> {{ produto.get_preco }}</h1>
+                    {% endif %}
+                </div>
+                <div>
+                    <span>Vendido por: </span>
+                    <span>{{ produto.vendedor }}</span>
+                </div>
+            </div>
+            <div class="info__btns">
+                <a href="{% url 'mercado:adicionar-carrinho' produto_id=produto.id %}" class="btn_white">Adicionar ao carrinho</a>
+                <a href="" class="btn_green">Comprar agora</a>
+            </div>
+        </div>
+    </div>
+    <div class="produto__detalhe">
+        <h1>Detalhe do produto</h1>
+        <div class="center">
+            {{ produto.descricao_html|safe }}
+        </div>
+    </div>
+    </main>
+{% endblock content %}

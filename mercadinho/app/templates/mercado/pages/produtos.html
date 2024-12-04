@@ -1,0 +1,24 @@
+
+{% extends 'global/base.html' %}
+
+{% load static %}
+
+{% block title %}{{ titulo_da_pagina }}{% endblock title %}
+
+{% block content %}
+    {% include 'global/components/header.html' %}
+
+    <main class="base-produtos container">
+        <h1>{{ titulo_da_pagina }}</h1>
+        <div class="produtos__cards">
+            {% for produto in produtos %}
+                {% include '../partials/cards.html' %}
+            {% empty %}
+                <div class="nada-encontrado">
+                    <img src="{% static '/global/image/not-found.png' %}" alt="Cones sinalizando que nada foi encontrado"/> 
+                </div>
+            {% endfor %}
+        </div>
+    </main>
+    
+{% endblock content %}  

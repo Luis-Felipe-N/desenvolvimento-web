@@ -1,0 +1,94 @@
+{% extends 'global/base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+
+{% block title %}{{ titulo_da_pagina }}{% endblock title %}
+
+{% block content %}
+    {% include 'global/components/header.html' %}
+
+    <main class="form-produto">
+        {% if form.errors %}
+            {% for error in form.errors %}
+                <p class="alert__error">
+                    {{ error }}
+                </p>                
+            {% endfor %}
+        {% endif %}
+
+        <form method="post" class="form-produto__container" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div class="form-produto__container-titulo">
+                {% include 'mercado/partials/titulo.html' %}
+            </div>
+
+            <div class="form-produto__campo-textos">
+                {% for field in form %}
+                    <label class="{{ field.field.widget.attrs.class }}">
+                        <span>
+                            {{ field.label }}
+                            {% if field.required %}
+                                <span class="requirido">*</span>
+                            {% endif %}
+                        </span>
+                        {{ field.help_text|safe }}    
+
+                        {% if field.name == 'imagem' %}
+                            <div>
+                                <span class="btn-selecionar-imagem">
+                                    Selecionar imagem
+                                </span>
+                                <span data="imageName">
+                                    Imagem.png
+                                </span>
+                            </div>
+
+                            {% endif %}
+                            
+                            {% render_field field placeholder=field.help_text|safe %}
+
+                            
+                            {% if field.name == 'com_desconto' %}
+                            <span class="toggle"></span>
+                            {% endif %}
+                        </label>
+                        {% if field.value.url %}
+                        <div class="imagem_preview">
+                            Visualizar imagem
+                            <img src="{{ field.value.url }}" alt="">
+                            <button data="btnOpenImagePreview" class="btn" role="">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 8V6H8V10H10V8H12Z" fill="currentColor" /><path d="M14 14H16V18H12V16H14V14Z" fill="currentColor" /><path fill-rule="evenodd" clip-rule="evenodd" d="M4 3C4 2.44772 4.44772 2 5 2H19C19.5523 2 20 2.44772 20 3V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V3ZM6 20V4H18V20H6Z" fill="currentColor" /></svg>
+                            </button>
+
+                            <div data="modalPreviewImage" class="modal-imagem_preview">
+                                <button data="btnCloseImagePreview" class="btn">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.2253 4.81108C5.83477 4.42056 5.20161 4.42056 4.81108 4.81108C4.42056 5.20161 4.42056 5.83477 4.81108 6.2253L10.5858 12L4.81114 17.7747C4.42062 18.1652 4.42062 18.7984 4.81114 19.1889C5.20167 19.5794 5.83483 19.5794 6.22535 19.1889L12 13.4142L17.7747 19.1889C18.1652 19.5794 18.7984 19.5794 19.1889 19.1889C19.5794 18.7984 19.5794 18.1652 19.1889 17.7747L13.4142 12L19.189 6.2253C19.5795 5.83477 19.5795 5.20161 19.189 4.81108C18.7985 4.42056 18.1653 4.42056 17.7748 4.81108L12 10.5858L6.2253 4.81108Z" fill="currentColor" /></svg>
+                                </button>
+                                <div>
+                                    <img src="{{ field.value.url }}" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}    
+                    {% if field.errors %}
+                        {% for error in field.errors %}
+                            <p class="form_error">
+                                {{ error }}  
+                            </p>     
+                        {% endfor %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+                
+            <div class="form-produto__btns">
+                <button type="submit" class="btn btn_green">
+                    Salvar
+                </button>
+                <a class="btn_white" href="{% url 'mercado:home' %}">Voltar</a>
+            </div>
+        </form>
+    </main>
+    
+    <script type="module" src="{% static 'global/js/form-produto.js' %}"></script>
+{% endblock content %}

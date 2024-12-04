@@ -1,0 +1,71 @@
+{% extends './base-produtos.html' %}
+{% block title %}{{ titulo_da_pagina }}{% endblock title %}
+
+{% block conteudo %}
+    {% include '../partials/titulo.html' %}
+    <section class="carrinho">
+        <div class="carrinho__cards">
+            {% for produto_carrinho in object_list %}     
+                <div class="carrinho__card">
+                    <div class="carrinho__card_img">
+                        <img src="{{ produto_carrinho.produto.imagem.url }}" alt="{{ produto_carrinho.produto.nome }}">
+                    </div>
+                    <div class="carrinho__card_info">
+                        <h4><small>Vendido por: </small><span>{{ produto_carrinho.produto.vendedor.nome_loja }}</span></h4>
+                        <h2>{{ produto_carrinho.produto.nome }}</h2>
+
+                        {% if produto_carrinho.produto.com_desconto %}
+                            <small>Com desconto de 60% sai de R$ <span class="preco_antigo">{{ produto_carrinho.produto.get_preco }}</span></small>
+                            <br>
+                            <small class="preco">para: <h2>R$ {{ produto_carrinho.produto.get_preco_com_desconto }}</h2></small>
+                        {% else %} 
+                           
+                            <small class="preco">Saindo por: <h2>R$ {{ produto_carrinho.produto.get_preco }}</h2></small>
+                        {% endif %}
+                    </div>
+                    <div class="carrinho__card_quant">
+                        <p>Quantidade:</p>
+                        <div>
+                            <button class="btn-icone">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4C11.4477 4 11 4.44772 11 5V11H5C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13H11V19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19V13H19C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11H13V5C13 4.44772 12.5523 4 12 4Z" fill="currentColor" /></svg>
+                            </button>
+                                <h3>{{ produto_carrinho.quantidade }}</h3>
+                            <button class="btn-icone">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 12C4 11.4477 4.44772 11 5 11H19C19.5523 11 20 11.4477 20 12C20 12.5523 19.5523 13 19 13H5C4.44772 13 4 12.5523 4 12Z" fill="currentColor" /></svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="carrinho__card_preco-total">
+                        Preço total:
+                        <h3 class="preco-total">R$ {{ produto_carrinho.get_preco_total_produto }}</h3>
+                        <a class="btn" href="{% url 'mercado:remover-carrinho' carrinho_id=produto_carrinho.id %}">
+                            Remover
+                        </a>
+                    </div>
+                </div>        
+            {% endfor %}
+        </div>
+        <div class="carrinho__resumo">
+            <div class="carrinho__resumo_titulo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M17 5.5H20C21.1046 5.5 22 6.39543 22 7.5V19.5C22 20.6046 21.1046 21.5 20 21.5H4C2.89543 21.5 2 20.6046 2 19.5V7.5C2 6.39543 2.89543 5.5 4 5.5H7C7 3.84315 8.34315 2.5 10 2.5H14C15.6569 2.5 17 3.84315 17 5.5ZM14 4.5H10C9.44772 4.5 9 4.94772 9 5.5H15C15 4.94772 14.5523 4.5 14 4.5ZM20 7.5H4V9.5H20V7.5ZM4 19.5V11.5H7V13.5H11V11.5H13V13.5H17V11.5H20V19.5H4Z" fill="currentColor" /></svg>
+                <h1>Resumo</h1>
+            </div>
+            <div class="carrinho__resumo_info">
+                <div>
+                    <small>Valor dos produtos: </small><h4>R$ 12.000,10</h4>
+                </div>
+                <div>
+                    <small>Frete: </small><h4>R$ 0,00</h4>
+                </div>
+                <div>
+                    <small>Sub total: </small><h4>R$ 12.000,10</h4>
+                </div>
+                <small></small>
+            </div>
+            <div class="carrinho__resumo_btns">
+                <a class="btn btn_green" href="">Ir para o pagamento</a>
+                <a class="btn btn_white" href="">Continuar comprando</a>
+            </div>
+        </div>
+    </section>
+{% endblock conteudo %} 

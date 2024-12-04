@@ -1,0 +1,1 @@
+from mercado.forms.ProdutoForm import ProdutoForm

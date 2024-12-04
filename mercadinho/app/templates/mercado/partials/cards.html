@@ -1,0 +1,27 @@
+{% load static %}
+
+<div class="card">
+    <a href="{{ produto.get_absolute_url }}">
+        {% block edit %}{% endblock edit %}
+        <div class="card__cover">
+            {% if produto.com_desconto is True %}
+                <span class="card__desconto">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.0001 3.67157L13.0001 3.67157L13.0001 16.4999L16.2426 13.2574L17.6568 14.6716L12 20.3284L6.34314 14.6716L7.75735 13.2574L11.0001 16.5001L11.0001 3.67157Z" fill="currentColor" /></svg>
+                    {{ produto.get_quantidade_desconto }}
+                </span>
+            {% endif %}
+            <img src="{{ produto.imagem.url }}" alt="{{ produto.nome }}">
+        </div>
+        <div class="card__info">
+            <h3 class="card__info_title">{{ produto.nome }}</h3>
+
+            {% if produto.com_desconto is True %}
+                <h6 class="card__info_price_old">R$ {{ produto.get_preco }}</h6>
+                <h3 class="card__info_price">R$ {{ produto.get_preco_com_desconto }}</h3>
+            {% else %}
+                <h3 class="card__info_price">R$ {{ produto.get_preco }}</h3>
+            {% endif %}
+        </div>
+    </a>
+</div>
+

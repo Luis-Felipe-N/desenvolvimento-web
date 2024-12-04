@@ -1,0 +1,19 @@
+{% extends 'global/base.html' %}
+
+{% block title %}Home   {% endblock title %}
+
+{% block content %}
+    {% include 'global/components/header.html' %}
+    <main class="home">
+        <div class="container">
+            {% include 'global/components/messages.html' %}
+
+            <div class="lista-cards">
+                {% for produto in produtos %}
+                    {% include '../partials/cards.html' %}
+                {% endfor %}
+            </div>
+        </div>
+        <div class="home__categoria"></div>
+    </main>
+{% endblock content %}
