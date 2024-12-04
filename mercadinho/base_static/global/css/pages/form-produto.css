@@ -1,0 +1,244 @@
+.form-produto {
+    padding: 2rem 5%;
+}
+
+.form-produto__container {
+    display: flex;
+    flex-direction: column;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.form-produto__campo-textos {
+    display: grid;
+    grid-template-columns: 25% 50% 20%;
+    justify-content: flex-start;
+    align-items: start;
+    gap: 1rem;
+}
+
+.form-produto__campo-textos .span-3 {
+    grid-column: 1 / 4;
+}
+
+.form-produto__container .form-produto__campo-textos label {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 1.5rem;
+}
+
+.form-produto__container .form-produto__campo-textos textarea,
+.form-produto__container .form-produto__campo-textos input[type="text"],
+.form-produto__container .form-produto__campo-textos input[type="number"] {
+    border-radius: 5px;
+    border: 2px solid var(--color-secondary);
+    font-size: 1rem;
+}
+
+.form-produto__container .form-produto__campo-textos textarea {
+    resize: none;
+    padding: 1rem;
+    height: 150px;
+}
+
+
+.form-produto__container .form-produto__campo-textos input[type="text"],
+.form-produto__container .form-produto__campo-textos input[type="number"] {
+    padding: 0 1rem;
+    display: block;
+    width: 100%;
+    height: 3rem;
+}
+
+.form-produto__container .form-produto__campo-textos select {
+    height: 3rem;
+    background-color: var(--color-primary-light);
+    flex: 1;
+    border-radius: 5px;
+    padding: 1rem;
+    font-size: 1rem;
+}
+
+.form-produto__container .form-produto__container-titulo svg {
+    font-size: 2.5rem;
+    /* font-size: ; */
+}
+
+.form-produto__container .form-produto__container-titulo h1 {
+    font-weight: 600;
+}
+
+.requirido {
+    color: var(--color-primary);
+}
+
+/* Campo Imagem */
+
+.form-produto__container .form-produto__campo-textos .label-imagem {
+    display: flex;
+}
+
+.form-produto__container .form-produto__campo-textos .label-imagem input {
+    display: none;
+}
+
+.form-produto__container .form-produto__campo-textos .label-imagem .btn-selecionar-imagem {
+    cursor: pointer;
+    display: inline-block;
+    margin-right: .5rem;
+    height: 3rem;
+    line-height: 3rem;
+    flex-shrink: 1;
+    background-color: var(--color-primary-light);
+    padding: 0 1rem;
+    border-radius: 5px;
+}
+
+.form-produto__container .form-produto__campo-textos .imagem_preview {
+    position: relative;
+}
+
+.form-produto__container .form-produto__campo-textos .imagem_preview > button {
+    position: absolute;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    bottom: 10px;
+    left: 10px;
+    height: 30px;
+    width: 30px;
+    display: grid;
+    place-items: center;
+}
+
+.form-produto__container .form-produto__campo-textos .imagem_preview  img {
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    object-fit: contain;
+    border-radius: 5px;
+    overflow: hidden;
+    max-width: 100%;
+    width: 100%;
+    height: 100px;
+}
+
+.form-produto__container .form-produto__campo-textos .imagem_preview .modal-imagem_preview {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, .8);
+    display: grid;
+    place-items: center ;
+    padding: 2rem 5%;
+    z-index: -1;
+    transform: scale(0);
+    transition: .2s;
+}
+
+.form-produto__container .form-produto__campo-textos .imagem_preview .modal-imagem_preview.active {
+    z-index: 3;
+    transform: scale(1);
+}
+
+.form-produto__container .form-produto__campo-textos .imagem_preview .modal-imagem_preview button {
+    justify-self: flex-end;
+    font-size: 0;
+    height: 3rem;
+    width: 3rem;
+    border-radius: 100%;
+    color: var(--color-white);
+    background-color: rgba(255, 255, 255, .2);
+    transition: .2s;
+}
+
+.form-produto__container .form-produto__campo-textos .imagem_preview .modal-imagem_preview button:hover {
+    box-shadow: 0 0 0 2px var(--color-white);
+}
+
+.form-produto__container .form-produto__campo-textos .imagem_preview .modal-imagem_preview > div {
+    max-width: 70%;
+    width: 100%;
+    background-color: var(--color-black);
+    border-radius: 10px;
+    overflow: hidden;
+    height: 90%;
+    padding: 2rem;
+    /* display: grid;
+    place-items: center; */
+}
+
+.form-produto__container .form-produto__campo-textos .imagem_preview .modal-imagem_preview img {
+    max-width: 100%;
+    width: 100%;
+    max-height: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Fim Campo Imagem */
+
+/* Campo Com_desconto */
+.form-produto__container .form-produto__campo-textos .label-row {
+    flex-direction: row !important;
+    align-items: center;
+    gap: .5rem;
+}
+
+.form-produto__container .form-produto__campo-textos .label-row  input{
+    display: none;
+}
+
+.form-produto__container .form-produto__campo-textos .label-row .toggle {
+    border-radius: 50px;
+    display: block;
+    background-color: var(--color-secondary);
+    width: 50px;
+    height: 30px;
+    position: relative;
+    padding: 3px;
+    cursor: pointer;
+    transition: .2s;
+    display: flex;
+    justify-content: start;
+}             
+
+.form-produto__container .form-produto__campo-textos .label-row .toggle::after {
+    content: '';
+    display: block;
+    transition: 2s;
+    border-radius: 100%;
+    width: 24px;
+    height: 24px;
+    background-color: var(--color-white);
+}
+
+.form-produto__container .form-produto__campo-textos .label-row input:checked ~ .toggle {
+    background-color: var(--color-primary);
+    justify-content: end;
+}
+
+.form-produto__container .form-produto__campo-textos .label-row input:checked ~ .toggle::after {
+    background-color: var(--color-secondary);
+}
+
+/* Fim Campo Com_desconto */
+
+.form-produto__btns  {
+    display: flex;
+    gap: 1rem;
+}
+
+.form-produto__btns a {
+    box-shadow: inset 0 0 0 2px var(--color-primary);
+}
+
+@media (max-width:840px) {
+    .form-produto__container .form-produto__campo-textos {
+        display: grid; 
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+}

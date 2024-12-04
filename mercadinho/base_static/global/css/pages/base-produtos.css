@@ -1,0 +1,56 @@
+.base-produtos.container {
+    margin-top: 2rem;
+    padding: 0 5%;
+}
+
+.dash_meus-produtos {
+    margin: 2rem 0;
+    display: grid;
+    place-content: center;
+    grid-template-columns: repeat(3, 20rem);
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: space-between;
+}
+
+.dash_meus-produtos div {
+    position: relative;
+    background-color: var(--color-primary);
+    color: #fff;
+    width: 100%;
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 0 20px rgba(48, 48, 48, 0.1);
+    overflow: hidden;
+}
+
+.dash_meus-produtos div::after {
+    content: '';
+    position: absolute;
+    width: 5rem;
+    height: 100%;
+    bottom: 0;
+    top:0;
+    right: 0;
+    clip-path: polygon(50% 0, 100% 0%, 100% 100%, 25% 100%);
+}
+
+.dash_meus-produtos div h3 {
+    font-size: 1.2rem;
+    font-weight: normal;
+}
+.dash_meus-produtos div h1 {
+    font-size: 2rem;
+}
+
+.dash_meus-produtos_todos::after {
+    /* background-color: var(--color-green); */
+}
+
+.dash_meus-produtos_ativos::after {
+    background-color: var(--color-green);
+}
+
+.dash_meus-produtos_desativos::after {
+    background-color: var(--color-red);
+}

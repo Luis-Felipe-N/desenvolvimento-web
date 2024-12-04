@@ -1,0 +1,121 @@
+.carrinho {
+    display: flex;
+    margin: 1rem 0;
+    gap: 1rem;
+}
+
+.container {
+    max-width: 1400px;
+}
+
+.carrinho h2, .carrinho h3, .carrinho h4 {
+    color: rgba(0, 0, 0, .8);
+}
+
+.carrinho__cards {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.carrinho__card {
+    display: grid;
+    grid-template-columns: 1fr 18rem 1fr 1fr;
+    gap: 2rem;
+}
+
+.carrinho__card_img {
+    max-width: 14rem;
+}
+
+.carrinho__card_img img{
+    width: 100%;
+    border-radius: 5px;
+    max-height: 100%;
+    height: 10rem;
+    object-fit: contain;
+}
+
+.carrinho__card_info {
+    max-width: 20rem;
+    /* overflow: hidden; */
+    
+}
+
+.carrinho__card_info h1 {
+    color: rgba(0, 0, 0, .8);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+}
+
+.carrinho__card_info .preco_antigo {
+    text-decoration: line-through;
+    font-style: italic;
+}
+
+.carrinho__card_info .preco {
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+}
+
+.carrinho__card_quant {
+    text-align: center;
+}
+
+.carrinho__card_quant > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    margin-top: 2rem;
+}
+
+.carrinho__card_quant > div button {
+    color: var(--color-primary);
+    cursor: pointer;
+}
+
+.carrinho__card_preco-total h3 {
+    color: var(--color-primary) !important;
+}
+
+.carrinho__resumo_titulo {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.carrinho__resumo_titulo:not(h1) {
+    color: var(--color-primary);
+}
+.carrinho__resumo_info {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+.carrinho__resumo_info div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: .5rem;
+    white-space: nowrap;
+}
+
+.carrinho__resumo_info div:first-child {
+    border-bottom: 1px solid rgba(0, 0, 0, .2);
+}
+
+.carrinho__resumo_btns a {
+    display: block;
+}
+.carrinho__resumo_btns a:first-child {
+    box-shadow: none;
+}
+
+.carrinho__resumo_btns a:last-child {
+    margin-top: 1rem;
+    box-shadow:inset 0 0 0 2px var(--color-primary);
+}

@@ -1,0 +1,22 @@
+.titulo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.titulo .btn__voltar {
+    font-size: 0;
+    padding: .1rem .9rem;
+    background-color: transparent;
+    color: var(--color-primary);
+    border: 0;
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.titulo .btn__voltar:hover {
+    background-color: var(--color-secondary);
+    box-shadow: 0 0 0 .1rem var(--color-secondary);
+}
