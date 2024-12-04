@@ -1,0 +1,3 @@
+from api.views.ProdutoListAPIView import ProdutoListAPIView
+from api.views.ProdutoCreateAPIView import ProdutoCreateAPIView
+from api.views.ProdutoRetrieveAPIView import ProdutoRetrieveAPIView

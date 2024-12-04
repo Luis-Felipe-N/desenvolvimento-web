@@ -42,8 +42,10 @@ INSTALLED_APPS += [
 ]
 
 INSTALLED_APPS += [
+    'api',
     'app',
-    'users'
+    'users',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -95,9 +97,16 @@ WSGI_APPLICATION = 'mercadinho.wsgi.application'
 # }
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+   'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'mercadinho',
+        'USER': 'root',
+        'PASSWORD': 'Luis55948',
+        'HOST': 'localhost',
+        'PORT': '3306',
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+        },
     }
 }
 
